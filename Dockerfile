@@ -5,5 +5,5 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 FROM openjdk:11
 EXPOSE 8080
-COPY --from=build usr/src/app/target/carApp-0.0.1-SNAPSHOT.jar /usr/app/carApp-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/usr/app/carApp-0.0.1-SNAPSHOT.jar"]
+COPY --from=build usr/src/app/target/demo-0.0.1-SNAPSHOT.jar /usr/app/demo-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","/usr/app/demo-0.0.1-SNAPSHOT.jar"]

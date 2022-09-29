@@ -47,4 +47,5 @@ public class PostController {
     public ResponseEntity<List<Post>> getPosts() {
         return ResponseEntity.ok(postService.getAllPosts());
     }
+
 }

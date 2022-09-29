@@ -73,7 +73,10 @@ public class PostService {
     public void updatePost(Long postId, Post postRequest) {
         Post post = getPost(postId);
         post.setLocalDate(LocalDate.now());
+        post.setLikes(post.getLikes() + 1);
         post.setDescription(postRequest.getDescription());
         postRepository.save(post);
     }
+
+
 }
