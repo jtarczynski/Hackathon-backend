@@ -60,6 +60,11 @@ public class UserController {
         return ResponseEntity.ok(userService.getUser(userId));
     }
 
+    @GetMapping()
+    public ResponseEntity<User> getCurrentUser(@RequestBody UsernamePasswordRequest usernamePasswordRequest) {
+        return ResponseEntity.ok(userService.getCurrentUser(usernamePasswordRequest));
+    }
+
     @GetMapping("all")
     public ResponseEntity<List<User>> getUsers() {
         return ResponseEntity.ok(userService.getAllUsers());

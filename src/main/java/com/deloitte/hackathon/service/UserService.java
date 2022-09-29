@@ -1,5 +1,6 @@
 package com.deloitte.hackathon.service;
 
+import com.deloitte.hackathon.dto.UsernamePasswordRequest;
 import com.deloitte.hackathon.entity.User;
 import com.deloitte.hackathon.exception.AppException;
 import com.deloitte.hackathon.repository.UserRepository;
@@ -16,6 +17,12 @@ public class UserService {
 
     public User getUser(Long userId) {
         return userRepository.findById(userId).orElseThrow(() -> new AppException("User not found"));
+    }
+
+    public User getCurrentUser(UsernamePasswordRequest usernamePasswordRequest) {
+        return userRepository
+                .findUserByUsernameAndPassword(usernamePasswordRequest.getUsername(),
+                        usernamePasswordRequest.getPassword());
     }
 
     public List<User> getAllUsers() {
@@ -42,7 +49,7 @@ public class UserService {
 
     public User loginUser(String username, String password) {
         User user = userRepository.findUserByUsernameAndPassword(username, password);
-        if(user != null) {
+        if (user != null) {
             return user;
         } else {
             throw new AppException("Invalid credentials");
