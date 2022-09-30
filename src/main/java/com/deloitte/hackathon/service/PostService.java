@@ -39,14 +39,18 @@ public class PostService {
     }
 
     public List<IdImagePostResponse> getPostImages() {
-        return postRepository.findAll()
+        List<Post> posts = postRepository.findAll();
+        posts.forEach(post -> post.setImage(awsStorageService.getImageURL(post.getImage())));
+        return posts
                 .stream()
                 .map(IdImagePostResponse::mapPostToIdImagePostResponse)
                 .collect(Collectors.toList());
     }
 
     public List<Post> getAllPosts() {
-        return postRepository.findAll();
+        List<Post> posts = postRepository.findAll();
+        posts.forEach(post -> post.setImage(awsStorageService.getImageURL(post.getImage())));
+        return posts;
     }
 
     public List<Comment> getPostComments(Long postId) {

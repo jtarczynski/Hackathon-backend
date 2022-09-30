@@ -32,7 +32,6 @@ public class UserController {
 
     private final CommentService commentService;
 
-
     @PostMapping("{userId}/posts/{postId}/add-comment")
     public ResponseEntity<Void> addComment(@PathVariable("userId") Long userId,
                                            @PathVariable("postId") Long postId,
@@ -60,7 +59,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getUser(userId));
     }
 
-    @GetMapping()
+    @GetMapping("current")
     public ResponseEntity<User> getCurrentUser(@RequestBody UsernamePasswordRequest usernamePasswordRequest) {
         return ResponseEntity.ok(userService.getCurrentUser(usernamePasswordRequest));
     }

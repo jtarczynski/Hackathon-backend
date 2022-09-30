@@ -43,7 +43,7 @@ public class PostController {
         return ResponseEntity.ok(postService.getPostImages());
     }
 
-    @PutMapping("all")
+    @GetMapping("all")
     public ResponseEntity<List<Post>> getPosts() {
         return ResponseEntity.ok(postService.getAllPosts());
     }
